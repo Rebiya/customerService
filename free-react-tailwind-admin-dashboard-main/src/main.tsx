@@ -6,6 +6,14 @@ import "simplebar-react/dist/simplebar.min.css";
 import App from "./App.tsx";
 import { AppWrapper } from "./components/common/PageMeta.tsx";
 import { ThemeProvider } from "./context/ThemeContext.tsx";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+// Initialize AOS once when the app loads
+AOS.init();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
