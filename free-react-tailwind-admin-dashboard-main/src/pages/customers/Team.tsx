@@ -20,7 +20,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Walter White",
     role: "Chief Executive Officer",
-    image: team1, // ✅ Correct usage
+    image: team1, 
     socialLinks: {
       twitter: "#",
       facebook: "#",
@@ -31,7 +31,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Sarah Jhonson",
     role: "Product Manager",
-    image: team2, // ✅ Using imported image
+    image: team2, 
     socialLinks: {
       twitter: "#",
       facebook: "#",

@@ -71,7 +71,7 @@ const Stats: React.FC = () => {
               {/* Stats Item 1 */}
               <div className="flex items-start gap-4">
                 <svg
-                  className="w-8 h-8 text-blue-600 flex-shrink-0"
+                  className="w-8 h-8 text-yellow-600 flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -85,7 +85,7 @@ const Stats: React.FC = () => {
                 </svg>
                 <div>
                   <span
-                    className="counter block text-3xl font-bold text-blue-600 mb-1"
+                    className="counter block text-3xl font-bold text-yellow-600 mb-1"
                     data-end="232"
                   >
                     0
@@ -102,7 +102,7 @@ const Stats: React.FC = () => {
               {/* Stats Item 2 */}
               <div className="flex items-start gap-4">
                 <svg
-                  className="w-8 h-8 text-blue-600 flex-shrink-0"
+                  className="w-8 h-8 text-yellow-600 flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -116,7 +116,7 @@ const Stats: React.FC = () => {
                 </svg>
                 <div>
                   <span
-                    className="counter block text-3xl font-bold text-blue-600 mb-1"
+                    className="counter block text-3xl font-bold text-yellow-600 mb-1"
                     data-end="521"
                   >
                     0
@@ -133,7 +133,7 @@ const Stats: React.FC = () => {
               {/* Stats Item 3 */}
               <div className="flex items-start gap-4">
                 <svg
-                  className="w-8 h-8 text-blue-600 flex-shrink-0"
+                  className="w-8 h-8 text-yellow-600 flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -147,7 +147,7 @@ const Stats: React.FC = () => {
                 </svg>
                 <div>
                   <span
-                    className="counter block text-3xl font-bold text-blue-600 mb-1"
+                    className="counter block text-3xl font-bold text-yellow-600 mb-1"
                     data-end="1453"
                   >
                     0
@@ -164,7 +164,7 @@ const Stats: React.FC = () => {
               {/* Stats Item 4 */}
               <div className="flex items-start gap-4">
                 <svg
-                  className="w-8 h-8 text-blue-600 flex-shrink-0"
+                  className="w-8 h-8 text-yellow-600 flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -178,7 +178,7 @@ const Stats: React.FC = () => {
                 </svg>
                 <div>
                   <span
-                    className="counter block text-3xl font-bold text-blue-600 mb-1"
+                    className="counter block text-3xl font-bold text-yellow-600 mb-1"
                     data-end="32"
                   >
                     0

@@ -69,7 +69,7 @@ const Contact: React.FC = () => {
               data-aos-delay="300"
             >
               <svg
-                className="w-6 h-6 text-blue-600 flex-shrink-0"
+                className="w-6 h-6 text-yellow-600 flex-shrink-0"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -101,7 +101,7 @@ const Contact: React.FC = () => {
               data-aos-delay="400"
             >
               <svg
-                className="w-6 h-6 text-blue-600 flex-shrink-0"
+                className="w-6 h-6 text-yellow-600 flex-shrink-0"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -125,7 +125,7 @@ const Contact: React.FC = () => {
               data-aos-delay="500"
             >
               <svg
-                className="w-6 h-6 text-blue-600 flex-shrink-0"
+                className="w-6 h-6 text-yellow-600 flex-shrink-0"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -208,7 +208,7 @@ const Contact: React.FC = () => {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors disabled:bg-blue-400"
+                  className="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700 transition-colors disabled:bg-yellow-600"
                 >
                   Send Message
                 </button>

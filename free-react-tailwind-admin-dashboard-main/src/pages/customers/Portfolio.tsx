@@ -117,7 +117,7 @@ const Portfolio: React.FC = () => {
           <li
             className={`cursor-pointer px-4 py-2 rounded-md ${
               filter === "*"
-                ? "bg-blue-600 text-white"
+                ? "bg-yellow-600 text-white"
                 : "text-gray-600 hover:bg-gray-200"
             }`}
             onClick={() => setFilter("*")}
@@ -127,7 +127,7 @@ const Portfolio: React.FC = () => {
           <li
             className={`cursor-pointer px-4 py-2 rounded-md ${
               filter === "app"
-                ? "bg-blue-600 text-white"
+                ? "bg-yellow-600 text-white"
                 : "text-gray-600 hover:bg-gray-200"
             }`}
             onClick={() => setFilter("app")}
@@ -137,7 +137,7 @@ const Portfolio: React.FC = () => {
           <li
             className={`cursor-pointer px-4 py-2 rounded-md ${
               filter === "product"
-                ? "bg-blue-600 text-white"
+                ? "bg-yellow-600 text-white"
                 : "text-gray-600 hover:bg-gray-200"
             }`}
             onClick={() => setFilter("product")}
@@ -147,7 +147,7 @@ const Portfolio: React.FC = () => {
           <li
             className={`cursor-pointer px-4 py-2 rounded-md ${
               filter === "branding"
-                ? "bg-blue-600 text-white"
+                ? "bg-yellow-600 text-white"
                 : "text-gray-600 hover:bg-gray-200"
             }`}
             onClick={() => setFilter("branding")}

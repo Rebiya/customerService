@@ -35,8 +35,8 @@ const CallAction: React.FC = () => {
             </p>
             <a
               href="#"
-              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-md 
-                        hover:bg-blue-700 transition-colors duration-300 
+              className="inline-block bg-yellow-700 text-white px-6 py-3 rounded-md 
+                        hover:bg-yellow-800 transition-colors duration-300 
                         font-medium text-lg"
             >
               Call To Action

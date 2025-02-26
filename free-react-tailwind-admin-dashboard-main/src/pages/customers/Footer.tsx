@@ -1,16 +1,21 @@
 import React from "react";
-
+import { Link } from "react-scroll";
+import { useNavigate } from "react-router-dom";
 const Footer: React.FC = () => {
+  const navigate = useNavigate();
+  const handleAdminDashboardClick = () => {
+    navigate("/AdminDashBoard");
+  };
   return (
     <footer id="footer" className="bg-gray-900 text-white">
       <div className="footer-top py-8">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="footer-about">
-              <a href="index.html" className="logo flex items-center">
+              <a href="/" className="logo flex items-center">
                 <span className="sitename text-xl font-bold">GP</span>
               </a>
-              <div className="footer-contact mt-3">
+              <div className="footer-contact mt-3 cursor-pointer">
                 <p>A108 Adam Street</p>
                 <p>New York, NY 535022</p>
                 <p className="mt-3">
@@ -38,36 +43,59 @@ const Footer: React.FC = () => {
 
             <div className="footer-links">
               <h4 className="text-lg font-semibold mb-2">Useful Links</h4>
-              <ul className="space-y-2">
+              <ul className="space-y-2 cursor-pointer">
                 <li className="flex items-center">
                   <i className="bi bi-chevron-right text-white mr-2"></i>
-                  <a href="#" className="hover:text-gray-400">
+                  <Link
+                    to="hero"
+                    smooth={true}
+                    duration={500}
+                    className="text-white hover:text-yellow-600"
+                  >
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="flex items-center">
                   <i className="bi bi-chevron-right text-white mr-2"></i>
-                  <a href="#" className="hover:text-gray-400">
-                    About us
-                  </a>
+                  <Link
+                    to="about"
+                    smooth={true}
+                    duration={500}
+                    className="text-white hover:text-yellow-600"
+                  >
+                    About
+                  </Link>
                 </li>
                 <li className="flex items-center">
                   <i className="bi bi-chevron-right text-white mr-2"></i>
-                  <a href="#" className="hover:text-gray-400">
+                  <Link
+                    to="services"
+                    smooth={true}
+                    duration={500}
+                    className="text-white hover:text-yellow-600"
+                  >
                     Services
-                  </a>
+                  </Link>
                 </li>
                 <li className="flex items-center">
                   <i className="bi bi-chevron-right text-white mr-2"></i>
-                  <a href="#" className="hover:text-gray-400">
-                    Terms of service
-                  </a>
+                  <Link
+                    to="portfolio"
+                    smooth={true}
+                    duration={500}
+                    className="text-white hover:text-yellow-600"
+                  >
+                    Portfolio
+                  </Link>
                 </li>
                 <li className="flex items-center">
                   <i className="bi bi-chevron-right text-white mr-2"></i>
-                  <a href="#" className="hover:text-gray-400">
-                    Privacy policy
-                  </a>
+                  <li
+                    className="text-white hover:text-yellow-600"
+                    onClick={handleAdminDashboardClick}
+                  >
+                    Admin DashBoard
+                  </li>
                 </li>
               </ul>
             </div>
@@ -108,7 +136,7 @@ const Footer: React.FC = () => {
               </ul>
             </div>
 
-            <div className="footer-newsletter">
+            <div className="footer-newsletter cursor-pointer">
               <h4 className="text-lg font-semibold mb-2">Our Newsletter</h4>
               <p className="mb-4">
                 Subscribe to our newsletter and receive the latest news about
@@ -129,12 +157,12 @@ const Footer: React.FC = () => {
                   <input
                     type="submit"
                     value="Subscribe"
-                    className="bg-blue-500 text-white px-4 py-2 rounded-r-md hover:bg-blue-600 cursor-pointer"
+                    className="bg-yellow-600 text-white px-4 py-2 rounded-r-md hover:bg-yellow-700 cursor-pointer"
                   />
                 </div>
                 <div className="loading text-gray-400">Loading</div>
                 <div className="error-message text-red-500"></div>
-                <div className="sent-message text-green-500">
+                <div className="sent-message text-green-500 ">
                   Your subscription request has been sent. Thank you!
                 </div>
               </form>
@@ -144,7 +172,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="copyright py-4">
-        <div className="container mx-auto text-center">
+        <div className="container mx-auto text-center cursor-pointer">
           <p>
             © <span>Copyright</span>{" "}
             <strong className="px-1 sitename">GP</strong>{" "}
@@ -153,10 +181,10 @@ const Footer: React.FC = () => {
           <div className="credits mt-2">
             Designed by{" "}
             <a
-              href="https://bootstrapmade.com/"
+              href="https://perfonet-technology.com/"
               className="text-gray-400 hover:text-gray-500"
             >
-              BootstrapMade
+              perfonet tech
             </a>
           </div>
         </div>
