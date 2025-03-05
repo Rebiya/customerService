@@ -19,17 +19,20 @@ const About: React.FC = () => {
           </div>
           <div className="lg:order-1">
             <h3 className="text-3xl font-bold mb-4">
-              Voluptatem dignissimos provident
+              Business Licensing & Trade Registration
             </h3>
             <p className="italic text-gray-600 mb-6">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              We're excited to introduce our Business Licensing & Trade
+              Registration system, designed to make the process of obtaining and
+              managing business licenses easier and more efficient for everyone
+              involved. Whether you're a business owner, a government officer,
+              or just curious about how this works, we've got you covered!
             </p>
             <ul className="space-y-4 mb-6">
               {[
-                "Ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                "Duis aute irure dolor in reprehenderit in voluptate velit.",
-                "Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.",
+                "Easy to Use: Our platform is designed with simplicity in mind. You can fill out forms, upload documents, and track your application status with just a few clicks.",
+                "Faster Processing: Say goodbye to long wait times and manual paperwork. Our digital system speeds up the licensing process, so you can focus on growing your business.",
+                "Scalable for Future Needs: As your business grows, our system can grow with you. We can add new features like online payments or advanced document verification as needed.",
               ].map((text, index) => (
                 <li key={index} className="flex items-center">
                   <i className="bi bi-check2-all text-green-500 mr-2"></i>
@@ -38,10 +41,9 @@ const About: React.FC = () => {
               ))}
             </ul>
             <p className="text-gray-700">
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-              irure dolor in reprehenderit in voluptate velit esse cillum dolore
-              eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident.
+              Keep track of your application status and receive updates via
+              email or SMS. Your information is securely stored and accessible
+              only to authorized personnel.
             </p>
           </div>
         </div>

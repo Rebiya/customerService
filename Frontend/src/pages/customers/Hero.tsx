@@ -1,19 +1,14 @@
 import React from "react";
 import img from "../../assets/images/hero-bg.jpg";
-
 const Hero: React.FC = () => {
   return (
-    <section
-      id="hero"
-      className="hero section dark-background"
-    >
+    <section id="hero" className="hero section dark-background">
       <img
         src={img}
         alt="Hero Background"
         className="absolute inset-0 w-full h-full object-cover opacity-50"
         data-aos="fade-in"
       />
-
       <div className="container mx-auto text-center py-20">
         <div
           className="row justify-content-center text-center max-w-2xl mx-auto space-y-4"
@@ -21,11 +16,13 @@ const Hero: React.FC = () => {
           data-aos-delay="100"
         >
           <h2 className="text-4xl font-bold text-white">
-            Powerful Digital <br /><br />Solutions With GP
+            Powerful Digital <br />
+            <br />
+            Solutions With GP
             <span className="text-accent">.</span>
           </h2>
           <p className="text-lg text-gray-300">
-            We are a team of talented digital marketers
+            Let's make the licensing process easier and more efficient together!
           </p>
         </div>
 
@@ -35,15 +32,23 @@ const Hero: React.FC = () => {
           data-aos-delay="200"
         >
           {[
-            { icon: "bi-binoculars", text: "Lorem Ipsum", delay: 300 },
-            { icon: "bi-bullseye", text: "Dolor Sitema", delay: 400 },
+            {
+              icon: "bi-binoculars",
+              text: "Business Registration",
+              delay: 300,
+            },
+            {
+              icon: "bi-bullseye",
+              text: "Licence issuance and Renewal",
+              delay: 400,
+            },
             {
               icon: "bi-fullscreen-exit",
-              text: "Sedare Perspiciatis",
+              text: "Vat and Tax Registration",
               delay: 500,
             },
-            { icon: "bi-card-list", text: "Magni Dolores", delay: 600 },
-            { icon: "bi-gem", text: "Nemos Enimade", delay: 700 },
+            { icon: "bi-card-list", text: "Investment Permit Approval", delay: 600 },
+            { icon: "bi-gem", text: "Inspection and Compliance Verification", delay: 700 },
           ].map(({ icon, text, delay }) => (
             <div
               key={text}
@@ -62,7 +67,7 @@ const Hero: React.FC = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div>{" "}
     </section>
   );
 };

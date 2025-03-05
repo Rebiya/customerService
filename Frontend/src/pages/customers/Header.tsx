@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   return (
@@ -10,8 +10,6 @@ const Header: React.FC = () => {
       <div className="container mx-auto flex items-center justify-between px-4 py-2 cursor-pointer">
         <Link
           to="hero" // This should match the section id
-          smooth={true}
-          duration={500}
           className="flex items-center text-lg font-bold text-white"
         >
           <h1 className="sitename text-yellow-600">GP</h1>
@@ -21,62 +19,35 @@ const Header: React.FC = () => {
         <nav id="navmenu" className="hidden md:flex space-x-4 cursor-pointer">
           <ul className="flex space-x-4">
             <li>
-              <Link
-                to="hero"
-                smooth={true}
-                duration={500}
-                className="text-white hover:text-yellow-600"
-              >
+              <Link to="/" className="text-white hover:text-yellow-600">
                 Home
               </Link>
             </li>
             <li>
-              <Link
-                to="about"
-                smooth={true}
-                duration={500}
-                className="text-white hover:text-yellow-600"
-              >
+              <Link to="/about" className="text-white hover:text-yellow-600">
                 About
               </Link>
             </li>
             <li>
-              <Link
-                to="services"
-                smooth={true}
-                duration={500}
-                className="text-white hover:text-yellow-600"
-              >
+              <Link to="/services" className="text-white hover:text-yellow-600">
                 Services
               </Link>
             </li>
             <li>
               <Link
-                to="portfolio"
-                smooth={true}
-                duration={500}
+                to="/portfolio"
                 className="text-white hover:text-yellow-600"
               >
                 Portfolio
               </Link>
             </li>
             <li>
-              <Link
-                to="team"
-                smooth={true}
-                duration={500}
-                className="text-white hover:text-yellow-600"
-              >
+              <Link to="/team" className="text-white hover:text-yellow-600">
                 Team
               </Link>
             </li>
             <li>
-              <Link
-                to="contact"
-                smooth={true}
-                duration={500}
-                className="text-white hover:text-yellow-600"
-              >
+              <Link to="/contact" className="text-white hover:text-yellow-600">
                 Contact
               </Link>
             </li>

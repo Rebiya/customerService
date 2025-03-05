@@ -28,10 +28,13 @@ const CallAction: React.FC = () => {
               Call To Action
             </h3>
             <p className="text-gray-200 mb-6 text-lg">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit
-              anim id est laborum.
+              Certainly! Here's a compelling call-to-action paragraph for your
+              website: Ready to revolutionize your business licensing
+              process? Join us in modernizing government services and making
+              licensing effortless for everyone involved. Streamline your
+              applications, enjoy faster approvals, and stay updated with
+              real-time tracking. Sign up now and experience the future of
+              efficient and transparent licensing! 
             </p>
             <a
               href="#"
