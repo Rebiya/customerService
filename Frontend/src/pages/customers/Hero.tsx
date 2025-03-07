@@ -18,8 +18,7 @@ const Hero: React.FC = () => {
           <h2 className="text-4xl font-bold text-white">
             Powerful Digital <br />
             <br />
-            Solutions With GP
-            <span className="text-accent">.</span>
+            Solutions With GP .
           </h2>
           <p className="text-lg text-gray-300">
             Let's make the licensing process easier and more efficient together!

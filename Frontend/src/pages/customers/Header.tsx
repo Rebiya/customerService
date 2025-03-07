@@ -12,42 +12,39 @@ const Header: React.FC = () => {
           to="hero" // This should match the section id
           className="flex items-center text-lg font-bold text-white"
         >
-          <h1 className="sitename text-yellow-600">GP</h1>
+          <h1 className="sitename text-blue-700">GP</h1>
           <span className="text-white">.</span>
         </Link>
 
         <nav id="navmenu" className="hidden md:flex space-x-4 cursor-pointer">
           <ul className="flex space-x-4">
             <li>
-              <Link to="/" className="text-white hover:text-yellow-600">
+              <Link to="/" className="text-white hover:text-blue-500">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/about" className="text-white hover:text-yellow-600">
+              <Link to="/about" className="text-white hover:text-blue-500">
                 About
               </Link>
             </li>
             <li>
-              <Link to="/services" className="text-white hover:text-yellow-600">
+              <Link to="/services" className="text-white hover:text-blue-500">
                 Services
               </Link>
             </li>
             <li>
-              <Link
-                to="/portfolio"
-                className="text-white hover:text-yellow-600"
-              >
+              <Link to="/portfolio" className="text-white hover:text-blue-500">
                 Portfolio
               </Link>
             </li>
             <li>
-              <Link to="/team" className="text-white hover:text-yellow-600">
+              <Link to="/team" className="text-white hover:text-blue-500">
                 Team
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="text-white hover:text-yellow-600">
+              <Link to="/contact" className="text-white hover:text-blue-500">
                 Contact
               </Link>
             </li>
@@ -55,7 +52,7 @@ const Header: React.FC = () => {
         </nav>
 
         <a
-          className="btn-getstarted bg-yellow-600 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer"
+          className="btn-getstarted bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-900 cursor-pointer"
           href="index.html#about"
         >
           Get Started

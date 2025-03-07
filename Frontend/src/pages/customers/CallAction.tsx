@@ -29,17 +29,17 @@ const CallAction: React.FC = () => {
             </h3>
             <p className="text-gray-200 mb-6 text-lg">
               Certainly! Here's a compelling call-to-action paragraph for your
-              website: Ready to revolutionize your business licensing
-              process? Join us in modernizing government services and making
-              licensing effortless for everyone involved. Streamline your
-              applications, enjoy faster approvals, and stay updated with
-              real-time tracking. Sign up now and experience the future of
-              efficient and transparent licensing! 
+              website: Ready to revolutionize your business licensing process?
+              Join us in modernizing government services and making licensing
+              effortless for everyone involved. Streamline your applications,
+              enjoy faster approvals, and stay updated with real-time tracking.
+              Sign up now and experience the future of efficient and transparent
+              licensing!
             </p>
             <a
               href="#"
-              className="inline-block bg-yellow-700 text-white px-6 py-3 rounded-md 
-                        hover:bg-yellow-800 transition-colors duration-300 
+              className="inline-block bg-blue-700 text-white px-6 py-3 rounded-md 
+                        hover:bg-blue-800 transition-colors duration-300 
                         font-medium text-lg"
             >
               Call To Action

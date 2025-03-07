@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
                     to="hero"
                     smooth={true}
                     duration={500}
-                    className="text-white hover:text-yellow-600"
+                    className="text-white hover:text-blue-500"
                   >
                     Home
                   </Link>
@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
                     to="about"
                     smooth={true}
                     duration={500}
-                    className="text-white hover:text-yellow-600"
+                    className="text-white hover:text-blue-500"
                   >
                     About
                   </Link>
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
                     to="services"
                     smooth={true}
                     duration={500}
-                    className="text-white hover:text-yellow-600"
+                    className="text-white hover:text-blue-500"
                   >
                     Services
                   </Link>
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
                     to="portfolio"
                     smooth={true}
                     duration={500}
-                    className="text-white hover:text-yellow-600"
+                    className="text-white hover:text-blue-500"
                   >
                     Portfolio
                   </Link>
@@ -91,7 +91,7 @@ const Footer: React.FC = () => {
                 <li className="flex items-center">
                   <i className="bi bi-chevron-right text-white mr-2"></i>
                   <li
-                    className="text-white hover:text-yellow-600"
+                    className="text-white hover:text-blue-500"
                     onClick={handleAdminDashboardClick}
                   >
                     Admin DashBoard
@@ -157,7 +157,7 @@ const Footer: React.FC = () => {
                   <input
                     type="submit"
                     value="Subscribe"
-                    className="bg-yellow-600 text-white px-4 py-2 rounded-r-md hover:bg-yellow-700 cursor-pointer"
+                    className="bg-blue-500 text-white px-4 py-2 rounded-r-md hover:bg-blue-500 cursor-pointer"
                   />
                 </div>
                 <div className="loading text-gray-400">Loading</div>
