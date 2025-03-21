@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import { Stepper, Button, Group } from "@mantine/core";
+import { useState } from "react";
 
 function AboutPage() {
   const [active, setActive] = useState(0);
