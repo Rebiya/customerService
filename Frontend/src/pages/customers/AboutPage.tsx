@@ -10,17 +10,19 @@ function AboutPage() {
     setActive((current) => (current > 0 ? current - 1 : current));
 
   return (
-    <div className="container mx-auto p-6 mt-20 bg-white shadow-lg rounded-lg flex justify-center items-center">
+    <div className="container mx-auto p-4 sm:p-6 mt-10 sm:mt-20 bg-white shadow-lg rounded-lg flex justify-center items-center">
       <div className="w-full">
-        <Stepper active={active} onStepClick={setActive} breakpoint="sm">
+        <Stepper active={active} onStepClick={setActive} orientation="vertical">
           <Stepper.Step
             label={
-              <span className="text-blue-500 font-semibold">First Step</span>
+              <span className="text-blue-500 font-semibold text-sm sm:text-base">
+                First Step
+              </span>
             }
             description="Create an Account or Login"
           >
-            <div className="bg-white p-6 rounded-lg shadow-md border-2 border-blue-500 text-black text-lg transition duration-300 hover:shadow-xl hover:bg-blue-50 mx-auto w-full">
-              <ul className="list-none space-y-3">
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md border-2 border-blue-500 text-black text-sm sm:text-lg transition duration-300 hover:shadow-xl hover:bg-blue-50 mx-auto w-full">
+              <ul className="list-none space-y-2 sm:space-y-3">
                 <li className="flex flex-wrap items-center">
                   <span className="text-black font-bold mr-2">✔</span>
                   Click on the <strong>"Sign Up"</strong> button on the homepage
@@ -47,12 +49,14 @@ function AboutPage() {
 
           <Stepper.Step
             label={
-              <span className="text-blue-500 font-semibold">Second Step</span>
+              <span className="text-blue-500 font-semibold text-sm sm:text-base">
+                Second Step
+              </span>
             }
             description="Applying for a Business License"
           >
-            <div className="bg-white p-6 rounded-lg shadow-md border-2 border-blue-500 text-black text-lg transition duration-300 hover:shadow-xl hover:bg-blue-50 mx-auto w-full">
-              <ul className="list-none space-y-3">
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md border-2 border-blue-500 text-black text-sm sm:text-lg transition duration-300 hover:shadow-xl hover:bg-blue-50 mx-auto w-full">
+              <ul className="list-none space-y-2 sm:space-y-3">
                 <li className="flex flex-wrap items-center">
                   <span className="text-black font-bold mr-2">✔</span>
                   Start a <strong>new business application</strong> through your
@@ -84,12 +88,14 @@ function AboutPage() {
 
           <Stepper.Step
             label={
-              <span className="text-blue-500 font-semibold">Third Step</span>
+              <span className="text-blue-500 font-semibold text-sm sm:text-base">
+                Third Step
+              </span>
             }
             description="Tracking Your Application Status"
           >
-            <div className="bg-white p-6 rounded-lg shadow-md border-2 border-blue-500 text-black text-lg transition duration-300 hover:shadow-xl hover:bg-blue-50 mx-auto w-full">
-              <ul className="list-none space-y-3">
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md border-2 border-blue-500 text-black text-sm sm:text-lg transition duration-300 hover:shadow-xl hover:bg-blue-50 mx-auto w-full">
+              <ul className="list-none space-y-2 sm:space-y-3">
                 <li className="flex flex-wrap items-center">
                   <span className="text-black font-bold mr-2">✔</span>
                   Check the <strong>current status</strong> of your application
@@ -118,11 +124,11 @@ function AboutPage() {
           </Stepper.Step>
 
           <Stepper.Completed>
-            <div className="bg-white p-6 rounded-lg shadow-md border-2 border-green-500 text-black text-lg transition duration-300 hover:shadow-xl hover:bg-green-50 mx-auto w-full text-center">
-              <div className="text-green-600 font-semibold text-xl">
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md border-2 border-green-500 text-black text-sm sm:text-lg transition duration-300 hover:shadow-xl hover:bg-green-50 mx-auto w-full text-center">
+              <div className="text-green-600 font-semibold text-lg sm:text-xl">
                 🎉 Congratulations! You have successfully completed all steps!
               </div>
-              <ul className="list-none space-y-3 mt-3">
+              <ul className="list-none space-y-2 sm:space-y-3 mt-3">
                 <li className="flex flex-wrap items-center justify-center">
                   <span className="text-green-600 font-bold mr-2">✔</span>
                   You can now{" "}

@@ -11,7 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Modal, TextField, Button } from "@mui/material";
-interface Customer {
+interface Employee {
   user_id: number;
   user_email: string;
   user_first_name: string;
@@ -24,38 +24,38 @@ interface Customer {
 }
 
 export default function BasicTableOne() {
-  const [customers, setCustomers] = useState<Customer[]>([]);
+  const [Employees, setEmployees] = useState<Employee[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [selectedUser, setSelectedUser] = useState<Customer | null>(null);
+  const [selectedUser, setSelectedUser] = useState<Employee | null>(null);
   const [formData, setFormData] = useState<any>({});
 
-  // Fetch customers data on component mount
+  // Fetch Employees data on component mount
   useEffect(() => {
-    const fetchCustomers = async () => {
+    const fetchEmployees = async () => {
       try {
-        const fetchedCustomers = await users.getCustomers();
-        const formattedData = fetchedCustomers.map((customer: any) => ({
-          user_id: customer.user_id,
-          user_email: customer.user_email,
-          user_first_name: customer.user_first_name,
-          user_last_name: customer.user_last_name,
-          user_phone_number: customer.user_phone_number,
-          role_id: customer.role_id,
-          user_img: customer.user_img || null,
-          active_user_status: customer.active_user_status,
-          uuid: customer.uuid,
+        const fetchedEmployees = await users.getEmployees();
+        const formattedData = fetchedEmployees.map((Employee: any) => ({
+          user_id: Employee.user_id,
+          user_email: Employee.user_email,
+          user_first_name: Employee.user_first_name,
+          user_last_name: Employee.user_last_name,
+          user_phone_number: Employee.user_phone_number,
+          role_id: Employee.role_id,
+          user_img: Employee.user_img || null,
+          active_user_status: Employee.active_user_status,
+          uuid: Employee.uuid,
         }));
-        setCustomers(formattedData);
+        setEmployees(formattedData);
       } catch (error) {
-        // console.error("Error fetching customers:", error);
+        // console.error("Error fetching Employees:", error);
       }
     };
 
-    fetchCustomers();
+    fetchEmployees();
   }, []);
 
-  // Handler for editing a customer (opens the modal)
-  const handleEdit = (user: Customer) => {
+  // Handler for editing a Employee (opens the modal)
+  const handleEdit = (user: Employee) => {
     setSelectedUser(user);
     setFormData({
       ...user,
@@ -80,11 +80,11 @@ export default function BasicTableOne() {
       };
       await users.editUser(selectedUser!.uuid, updatedData);
       // Update the local state with the new user data
-      setCustomers((prevCustomers) =>
-        prevCustomers.map((customer) =>
-          customer.uuid === selectedUser!.uuid
-            ? { ...customer, ...updatedData }
-            : customer
+      setEmployees((prevEmployees) =>
+        prevEmployees.map((Employee) =>
+          Employee.uuid === selectedUser!.uuid
+            ? { ...Employee, ...updatedData }
+            : Employee
         )
       );
       closeModal();
@@ -93,7 +93,7 @@ export default function BasicTableOne() {
     }
   };
 
-  // Handler for deleting a customer
+  // Handler for deleting a Employee
   const handleDelete = async (uuid: string) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this user?"
@@ -102,8 +102,8 @@ export default function BasicTableOne() {
       try {
         await users.deleteUser(uuid); // Use uuid for the API call
         // Remove the user from the list
-        setCustomers((prevCustomers) =>
-          prevCustomers.filter((customer) => customer.uuid !== uuid)
+        setEmployees((prevEmployees) =>
+          prevEmployees.filter((Employee) => Employee.uuid !== uuid)
         );
       } catch (error) {
         // console.error("Error deleting user:", error);
@@ -172,30 +172,30 @@ export default function BasicTableOne() {
 
           {/* Table Body */}
           <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
-            {customers.map((customer) => (
-              <TableRow key={customer.user_id}>
+            {Employees.map((Employee) => (
+              <TableRow key={Employee.user_id}>
                 {/* User Column */}
                 <TableCell className="px-4 py-3 text-start">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 overflow-hidden rounded-full">
-                      {customer.user_img ? (
+                      {Employee.user_img ? (
                         <img
                           width={40}
                           height={40}
-                          src={customer.user_img}
-                          alt={`${customer.user_first_name} ${customer.user_last_name}`}
+                          src={Employee.user_img}
+                          alt={`${Employee.user_first_name} ${Employee.user_last_name}`}
                           className="rounded-full"
                         />
                       ) : (
                         <Avatar className="w-10 h-10">
-                          {customer.user_first_name[0]}
-                          {customer.user_last_name[0]}
+                          {Employee.user_first_name[0]}
+                          {Employee.user_last_name[0]}
                         </Avatar>
                       )}
                     </div>
                     <div>
                       <span className="block font-medium text-gray-800 text-sm dark:text-white/90">
-                        {customer.user_first_name} {customer.user_last_name}
+                        {Employee.user_first_name} {Employee.user_last_name}
                       </span>
                     </div>
                   </div>
@@ -203,33 +203,33 @@ export default function BasicTableOne() {
 
                 {/* Email Column */}
                 <TableCell className="hidden sm:table-cell px-4 py-2 text-gray-500 text-sm dark:text-gray-400">
-                  {customer.user_email}
+                  {Employee.user_email}
                 </TableCell>
 
                 {/* Phone Number Column */}
                 <TableCell className="hidden sm:table-cell px-4 py-2 text-gray-500 text-sm dark:text-gray-400">
-                  {customer.user_phone_number}
+                  {Employee.user_phone_number}
                 </TableCell>
 
                 {/* Role Column */}
                 <TableCell className="hidden sm:table-cell px-4 py-2 text-gray-500 text-sm dark:text-gray-400">
-                  {customer.role_id === 1 ? "Customer" : "Employee"}
+                  {Employee.role_id === 1 ? "Employee" : "Employee"}
                 </TableCell>
 
                 {/* Image Column */}
                 <TableCell className="hidden sm:table-cell px-4 py-2 text-gray-500 text-sm dark:text-gray-400">
-                  {customer.user_img ? (
+                  {Employee.user_img ? (
                     <img
                       width={40}
                       height={40}
-                      src={customer.user_img}
+                      src={Employee.user_img}
                       alt="User Image"
                       className="w-10 h-10 rounded-full object-cover" // Ensures the image is square and fits in the circle
                     />
                   ) : (
                     <Avatar className="w-10 h-10">
-                      {customer.user_first_name[0]}
-                      {customer.user_last_name[0]}
+                      {Employee.user_first_name[0]}
+                      {Employee.user_last_name[0]}
                     </Avatar>
                   )}
                 </TableCell>
@@ -238,12 +238,12 @@ export default function BasicTableOne() {
                 <TableCell className="hidden sm:table-cell px-4 py-2 text-start">
                   <span
                     className={`${
-                      customer.active_user_status === 1
+                      Employee.active_user_status === 1
                         ? "bg-green-200 text-green-800"
                         : "bg-red-200 text-red-800"
                     } px-3 py-1 rounded-full text-sm`}
                   >
-                    {customer.active_user_status === 1 ? "Active" : "Inactive"}
+                    {Employee.active_user_status === 1 ? "Active" : "Inactive"}
                   </span>
                 </TableCell>
 
@@ -251,11 +251,11 @@ export default function BasicTableOne() {
                 <TableCell className="px-4 py-3 text-gray-500 text-sm text-start dark:text-gray-400">
                   <div className="flex justify-end gap-3">
                     <EditIcon
-                      onClick={() => handleEdit(customer)}
+                      onClick={() => handleEdit(Employee)}
                       className="cursor-pointer text-blue-500"
                     />
                     <DeleteIcon
-                      onClick={() => handleDelete(customer.uuid)} // Pass uuid here
+                      onClick={() => handleDelete(Employee.uuid)} // Pass uuid here
                       className="cursor-pointer text-red-500"
                     />
                   </div>

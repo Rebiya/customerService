@@ -3,9 +3,6 @@ import { Link } from "react-scroll";
 import { useNavigate } from "react-router-dom";
 const Footer: React.FC = () => {
   const navigate = useNavigate();
-  const handleAdminDashboardClick = () => {
-    navigate("/AdminDashBoard");
-  };
   return (
     <footer id="footer" className="bg-gray-900 text-white">
       <div className="footer-top py-8">
@@ -16,28 +13,28 @@ const Footer: React.FC = () => {
                 <span className="sitename text-xl font-bold">GP</span>
               </a>
               <div className="footer-contact mt-3 cursor-pointer">
-                <p>A108 Adam Street</p>
-                <p>New York, NY 535022</p>
+                <p>Bole Denbel </p>
+                <p>Addis Ababa ,Ethiopia</p>
                 <p className="mt-3">
-                  <strong>Phone:</strong> <span>+1 5589 55488 55</span>
+                  <strong>Phone:</strong> <span>+251 993 044 432</span>
                 </p>
                 <p>
-                  <strong>Email:</strong> <span>info@example.com</span>
+                  <strong>Email:</strong> <span>rebum.19@gmail.com</span>
                 </p>
               </div>
               <div className="social-links flex mt-4 space-x-3">
-                <a href="#">
+                <Link to="https://perfonet-technology.com/">
                   <i className="bi bi-twitter-x text-white"></i>
-                </a>
-                <a href="#">
+                </Link>
+                <Link to="https://perfonet-technology.com/">
                   <i className="bi bi-facebook text-white"></i>
-                </a>
-                <a href="#">
+                </Link>
+                <Link to="https://perfonet-technology.com/">
                   <i className="bi bi-instagram text-white"></i>
-                </a>
-                <a href="#">
+                </Link>
+                <Link to="https://perfonet-technology.com/">
                   <i className="bi bi-linkedin text-white"></i>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -88,49 +85,34 @@ const Footer: React.FC = () => {
                     Portfolio
                   </Link>
                 </li>
-                <li className="flex items-center">
-                  <i className="bi bi-chevron-right text-white mr-2"></i>
-                  <li
-                    className="text-white hover:text-blue-500"
-                    onClick={handleAdminDashboardClick}
-                  >
-                    Admin DashBoard
-                  </li>
-                </li>
               </ul>
             </div>
 
             <div className="footer-links">
               <h4 className="text-lg font-semibold mb-2">Our Services</h4>
-              <ul className="space-y-2">
+              <ul className="space-y-2" onClick={() => navigate("/services")}>
                 <li className="flex items-center">
                   <i className="bi bi-chevron-right text-white mr-2"></i>
-                  <a href="#" className="hover:text-gray-400">
-                    Web Design
+                  <a href="#" className="hover:text-blue-500">
+                    Business Registration
                   </a>
                 </li>
                 <li className="flex items-center">
                   <i className="bi bi-chevron-right text-white mr-2"></i>
-                  <a href="#" className="hover:text-gray-400">
-                    Web Development
+                  <a href="#" className="hover:text-blue-500">
+                    license Renewal
                   </a>
                 </li>
                 <li className="flex items-center">
                   <i className="bi bi-chevron-right text-white mr-2"></i>
-                  <a href="#" className="hover:text-gray-400">
-                    Product Management
+                  <a href="#" className="hover:text-blue-500">
+                    VAT and TAX registration
                   </a>
                 </li>
                 <li className="flex items-center">
                   <i className="bi bi-chevron-right text-white mr-2"></i>
-                  <a href="#" className="hover:text-gray-400">
-                    Marketing
-                  </a>
-                </li>
-                <li className="flex items-center">
-                  <i className="bi bi-chevron-right text-white mr-2"></i>
-                  <a href="#" className="hover:text-gray-400">
-                    Graphic Design
+                  <a href="#" className="hover:text-blue-500">
+                    Investment Approval
                   </a>
                 </li>
               </ul>
@@ -140,10 +122,10 @@ const Footer: React.FC = () => {
               <h4 className="text-lg font-semibold mb-2">Our Newsletter</h4>
               <p className="mb-4">
                 Subscribe to our newsletter and receive the latest news about
-                our products and services!
+                our services!
               </p>
               <form
-                action="forms/newsletter.php"
+                // action="forms/newsletter.php"
                 method="post"
                 className="php-email-form"
               >
@@ -160,7 +142,7 @@ const Footer: React.FC = () => {
                     className="bg-blue-500 text-white px-4 py-2 rounded-r-md hover:bg-blue-500 cursor-pointer"
                   />
                 </div>
-                <div className="loading text-gray-400">Loading</div>
+                <div className="loading text-blue-500">Loading</div>
                 <div className="error-message text-red-500"></div>
                 <div className="sent-message text-green-500 ">
                   Your subscription request has been sent. Thank you!
@@ -181,10 +163,10 @@ const Footer: React.FC = () => {
           <div className="credits mt-2">
             Designed by{" "}
             <a
-              href="https://perfonet-technology.com/"
-              className="text-gray-400 hover:text-gray-500"
+              href="https://rebiyamusema.com/"
+              className="text-gray-400 hover:text-blue-500"
             >
-              perfonet tech
+              MissFix
             </a>
           </div>
         </div>

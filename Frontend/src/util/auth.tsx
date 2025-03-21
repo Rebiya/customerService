@@ -1,51 +1,63 @@
-// Define the types for Employee and DecodedToken
-interface Employee {
-  employee_token: string;
-  employee_role?: string;
-  employee_id?: string;
-  employee_first_name?: string;
-  employee_last_name?: string;
-  employee_email?: string;
-  employee_phone?: string;
+import { jwtDecode } from "jwt-decode";
+
+interface User {
+  token: string;
+  user_id?: number;
+  user_first_name?: string;
+  user_last_name?: string;
+  user_email?: string;
+  user_phone_number?: string;
+  role_id?: number;
+  user_img?: string;
+  active_user_status?: number;
 }
 
 interface DecodedToken {
-  employee_role: string;
-  employee_id: string;
-  employee_first_name: string;
-  employee_last_name: string;
-  employee_email: string;
-  employee_phone: string;
+  role_id: number;
+  user_id: number;
+  user_first_name: string;
+  user_last_name: string;
+  user_email: string;
+  user_phone_number: string;
+  active_user_status: number;
+  user_img: string;
+  exp: number;
 }
 
-// Function to read the data from the user's local storage
-const getAuth = async (): Promise<Employee> => {
-  const employeeString = localStorage.getItem("employee");
-  if (!employeeString) {
-    return { employee_token: "" }; // Ensures the return type is always Employee
+const getAuth = (): User | null => {
+  try {
+    // Retrieve the token directly from local storage
+    const token = localStorage.getItem("token");
+    if (!token) return null;
+
+    // Decode the token to extract user information
+    const decodedToken = jwtDecode<DecodedToken>(token);
+
+    // console.log("Decoded Token:", decodedToken);
+
+    // Check if the token is expired
+    if (decodedToken.exp * 1000 < Date.now()) {
+      logout();
+      return null;
+    }
+
+    // Return the user object with token and decoded information
+    return {
+      token,
+      ...decodedToken,
+    };
+  } catch (error) {
+    // console.error("Error parsing user data:", error);
+    return null;
   }
-
-  const employee: Employee = JSON.parse(employeeString);
-
-  if (employee?.employee_token) {
-    const decodedToken = await decodeTokenPayload(employee.employee_token);
-    return { ...employee, ...decodedToken };
-  }
-
-  return { employee_token: "" }; // Default Employee object
 };
 
-// Function to decode the payload from the token
-const decodeTokenPayload = (token: string): DecodedToken => {
-  const base64Url = token.split(".")[1];
-  const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-  const jsonPayload = decodeURIComponent(
-    atob(base64)
-      .split("")
-      .map((c) => `%${`00${c.charCodeAt(0).toString(16)}`.slice(-2)}`)
-      .join("")
-  );
-  return JSON.parse(jsonPayload);
+const logout = () => {
+  // console.log("Logging out...");
+  // Remove the token from local storage
+  localStorage.removeItem("token");
+  // Redirect to the home page
+  window.location.href = "/";
 };
 
-export default getAuth;
+export { getAuth, logout };

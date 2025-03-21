@@ -1,6 +1,6 @@
 // Stats.tsx
 import React, { useEffect, useRef } from "react";
-import statimg from "../../assets/images/stats-img.jpg";
+import statimg from "../../assets/images/bg/10003.jpg";
 const Stats: React.FC = () => {
   const statsRef = useRef<HTMLDivElement>(null);
 
@@ -56,12 +56,13 @@ const Stats: React.FC = () => {
           {/* Stats Content */}
           <div className="w-full lg:w-6/12">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Voluptatem dignissimos provident quasi
+              Streamlined Business Licensing and Registration Services
             </h3>
             <p className="text-gray-600 mb-6">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis
-              aute irure dolor in reprehenderit
+              we specialize in providing seamless and efficient business
+              licensing and registration services. Our expert team ensures that
+              your business complies with all legal requirements, allowing you
+              to focus on growth and success.
             </p>
 
             <div
@@ -91,9 +92,9 @@ const Stats: React.FC = () => {
                     0
                   </span>
                   <p className="text-gray-800">
-                    <strong>Happy Clients</strong>{" "}
+                    <strong>Satisfied Clients</strong>{" "}
                     <span className="block text-sm text-gray-600">
-                      consequuntur quae
+                      clients actively using our services
                     </span>
                   </p>
                 </div>
@@ -122,9 +123,9 @@ const Stats: React.FC = () => {
                     0
                   </span>
                   <p className="text-gray-800">
-                    <strong>Projects</strong>{" "}
+                    <strong>Registered Businesses</strong>{" "}
                     <span className="block text-sm text-gray-600">
-                      adipisci atque cum quia aut
+                      businesses registered with us
                     </span>
                   </p>
                 </div>
@@ -153,9 +154,9 @@ const Stats: React.FC = () => {
                     0
                   </span>
                   <p className="text-gray-800">
-                    <strong>Hours Of Support</strong>{" "}
+                    <strong>Support Hour</strong>{" "}
                     <span className="block text-sm text-gray-600">
-                      aut commodi quaerat
+                      dedicated support hours
                     </span>
                   </p>
                 </div>
@@ -186,7 +187,7 @@ const Stats: React.FC = () => {
                   <p className="text-gray-800">
                     <strong>Hard Workers</strong>{" "}
                     <span className="block text-sm text-gray-600">
-                      rerum asperiores dolor
+                      Dedicated Experts committed to deliver
                     </span>
                   </p>
                 </div>

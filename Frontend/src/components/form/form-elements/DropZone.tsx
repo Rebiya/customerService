@@ -1,71 +1,138 @@
-import ComponentCard from "../../common/ComponentCard";
+import { useState } from "react";
 import { useDropzone } from "react-dropzone";
-// import Dropzone from "react-dropzone";
+import axios from "axios";
+import ComponentCard from "../../common/ComponentCard";
 
-const DropzoneComponent: React.FC = () => {
-  const onDrop = (acceptedFiles: File[]) => {
-    console.log("Files dropped:", acceptedFiles);
-    // Handle file uploads here
+const DropzoneComponent: React.FC<{ onImageUpload: (url: string) => void }> = ({
+  onImageUpload,
+}) => {
+  const [uploadedImage, setUploadedImage] = useState<string | null>(null); // State to store the uploaded image URL
+  const [showPreview, setShowPreview] = useState<boolean>(false); // State to control the preview popup
+  const [isImageConfirmed, setIsImageConfirmed] = useState<boolean>(false); // State to track if the image is confirmed
+
+  const onDrop = async (acceptedFiles: File[]) => {
+    if (isImageConfirmed) return; // Do nothing if an image is already confirmed
+
+    const formData = new FormData();
+    formData.append("file", acceptedFiles[0]);
+    formData.append("upload_preset", "x2omxwjd"); // Replace with your Cloudinary upload preset
+
+    try {
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/djxrxjiuf/image/upload",
+        formData
+      );
+      const imageUrl = response.data.secure_url; // Cloudinary URL of the uploaded image
+      // console.log("Cloudinary Image URL:", imageUrl); // Log the URL
+      setUploadedImage(imageUrl); // Set the uploaded image URL for preview
+      setShowPreview(true); // Show the preview popup
+    } catch (error) {
+      // console.error("Error uploading image:", error);
+    }
+  };
+
+  const handleConfirm = () => {
+    if (uploadedImage) {
+      onImageUpload(uploadedImage); // Pass the URL to the parent component
+      setShowPreview(false); // Close the preview popup
+      setIsImageConfirmed(true); // Mark the image as confirmed
+    }
+  };
+
+  const handleCancel = () => {
+    setUploadedImage(null); // Clear the uploaded image
+    setShowPreview(false); // Close the preview popup
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: {
-      "image/png": [],
-      "image/jpeg": [],
-      "image/webp": [],
-      "image/svg+xml": [],
-    },
+    accept: { "image/*": [] },
+    noClick: isImageConfirmed, // Disable click if an image is confirmed
+    noKeyboard: isImageConfirmed, // Disable keyboard if an image is confirmed
+    noDrag: isImageConfirmed, // Disable drag if an image is confirmed
   });
+
   return (
     <ComponentCard title="Dropzone">
-      <div className="transition border border-gray-300 border-dashed cursor-pointer dark:hover:border-brand-500 dark:border-gray-700 rounded-xl hover:border-brand-500">
+      <div
+        className={`transition border border-gray-300 border-dashed cursor-pointer dark:hover:border-brand-500 dark:border-gray-700 rounded-xl hover:border-brand-500 ${
+          isImageConfirmed ? "pointer-events-none" : "" // Disable pointer events if an image is confirmed
+        }`}
+      >
         <form
           {...getRootProps()}
-          className={`dropzone rounded-xl   border-dashed border-gray-300 p-7 lg:p-10
-        ${
-          isDragActive
-            ? "border-brand-500 bg-gray-100 dark:bg-gray-800"
-            : "border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-gray-900"
-        }
-      `}
-          id="demo-upload"
+          className={`dropzone rounded-xl border-dashed border-gray-300 p-7 lg:p-10
+          ${
+            isDragActive
+              ? "border-brand-500 bg-gray-100 dark:bg-gray-800"
+              : "border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-gray-900"
+          }`}
         >
-          {/* Hidden Input */}
           <input {...getInputProps()} />
-
           <div className="dz-message flex flex-col items-center !m-0">
-            {/* Icon Container */}
-            <div className="mb-[22px] flex justify-center">
-              <div className="flex h-[68px] w-[68px]  items-center justify-center rounded-full bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-400">
-                <svg
-                  className="fill-current"
-                  width="29"
-                  height="28"
-                  viewBox="0 0 29 28"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M14.5019 3.91699C14.2852 3.91699 14.0899 4.00891 13.953 4.15589L8.57363 9.53186C8.28065 9.82466 8.2805 10.2995 8.5733 10.5925C8.8661 10.8855 9.34097 10.8857 9.63396 10.5929L13.7519 6.47752V18.667C13.7519 19.0812 14.0877 19.417 14.5019 19.417C14.9161 19.417 15.2519 19.0812 15.2519 18.667V6.48234L19.3653 10.5929C19.6583 10.8857 20.1332 10.8855 20.426 10.5925C20.7188 10.2995 20.7186 9.82463 20.4256 9.53184L15.0838 4.19378C14.9463 4.02488 14.7367 3.91699 14.5019 3.91699ZM5.91626 18.667C5.91626 18.2528 5.58047 17.917 5.16626 17.917C4.75205 17.917 4.41626 18.2528 4.41626 18.667V21.8337C4.41626 23.0763 5.42362 24.0837 6.66626 24.0837H22.3339C23.5766 24.0837 24.5839 23.0763 24.5839 21.8337V18.667C24.5839 18.2528 24.2482 17.917 23.8339 17.917C23.4197 17.917 23.0839 18.2528 23.0839 18.667V21.8337C23.0839 22.2479 22.7482 22.5837 22.3339 22.5837H6.66626C6.25205 22.5837 5.91626 22.2479 5.91626 21.8337V18.667Z"
-                  />
-                </svg>
+            {uploadedImage && isImageConfirmed ? (
+              // Display the confirmed image in the dropzone
+              <div className="w-full h-40 flex items-center justify-center">
+                <img
+                  src={uploadedImage}
+                  alt="Uploaded Preview"
+                  className="w-full h-full rounded-lg"
+                />
               </div>
-            </div>
-
-            {/* Text Content */}
-            <h4 className="mb-3 font-semibold text-gray-800 text-theme-xl dark:text-white/90">
-              {isDragActive ? "Drop Files Here" : "Drag & Drop Files Here"}
-            </h4>
-
-            <span className=" text-center mb-5 block w-full max-w-[290px] text-sm text-gray-700 dark:text-gray-400">
-              Drag and drop your PNG, JPG, WebP, SVG images here or browse
-            </span>
-
-            <span className="font-medium underline text-theme-sm text-brand-500">
-              Browse File
-            </span>
+            ) : uploadedImage && showPreview ? (
+              // Display the uploaded image preview in a popup
+              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                <div className="bg-white p-6 rounded-lg shadow-lg">
+                  <div className="w-64 h-64 flex items-center justify-center">
+                    <img
+                      src={uploadedImage}
+                      alt="Uploaded Preview"
+                      className="w-full h-full rounded-lg"
+                    />
+                  </div>
+                  <div className="flex justify-end mt-4 space-x-2">
+                    <button
+                      onClick={handleCancel}
+                      className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onClick={handleConfirm}
+                      className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                    >
+                      OK
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              // Default dropzone content
+              <>
+                <div className="mb-[22px] flex justify-center">
+                  <div className="flex h-[68px] w-[68px] items-center justify-center rounded-full bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-400">
+                    <svg
+                      className="fill-current"
+                      width="29"
+                      height="28"
+                      viewBox="0 0 29 28"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      {/* SVG Icon */}
+                    </svg>
+                  </div>
+                </div>
+                <h4 className="mb-3 font-semibold text-gray-800 text-theme-xl dark:text-white/90">
+                  {isDragActive ? "Drop Files Here" : "Drag & Drop Files Here"}
+                </h4>
+                <span className="text-center mb-5 block w-full max-w-[290px] text-sm text-gray-700 dark:text-gray-400">
+                  Drag and drop your PNG, JPG, WebP, SVG images here or browse
+                </span>
+                <span className="font-medium underline text-theme-sm text-brand-500">
+                  Browse File
+                </span>
+              </>
+            )}
           </div>
         </form>
       </div>

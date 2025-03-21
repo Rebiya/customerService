@@ -1,5 +1,6 @@
-// Contact.tsx
 import React, { useState, FormEvent } from "react";
+import emailjs from "emailjs-com";
+import { toast } from "react-toastify";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -16,14 +17,19 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setStatus("loading");
 
-    // Simulate form submission (replace with actual API call)
+    const serviceID = "service_q0jj7re"; // Replace with your EmailJS Service ID
+    const templateID = "template_ajvccmo"; // Replace with your EmailJS Template ID
+    const userID = "pkHhiz1mxXW2QzvU9"; // Replace with your EmailJS Public Key
+
     try {
-      // Example: await fetch('/forms/contact.php', { method: 'POST', body: JSON.stringify(formData) });
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulated delay
+      await emailjs.send(serviceID, templateID, formData, userID);
       setStatus("success");
+      toast.success("Message sent successfully!");
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
+      console.error("EmailJS Error:", error);
       setStatus("error");
+      toast.error("Failed to send message. Please try again.");
     }
   };
 
@@ -69,7 +75,7 @@ const Contact: React.FC = () => {
               data-aos-delay="300"
             >
               <svg
-                className="w-6 h-6 text-yellow-600 flex-shrink-0"
+                className="w-6 h-6 text-blue-600 flex-shrink-0"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -89,9 +95,7 @@ const Contact: React.FC = () => {
               </svg>
               <div>
                 <h3 className="text-lg font-semibold text-gray-800">Address</h3>
-                <p className="text-gray-600">
-                  A108 Adam Street, New York, NY 535022
-                </p>
+                <p className="text-gray-600">Bole, Addis Ababa, Ethiopia</p>
               </div>
             </div>
 
@@ -101,7 +105,7 @@ const Contact: React.FC = () => {
               data-aos-delay="400"
             >
               <svg
-                className="w-6 h-6 text-yellow-600 flex-shrink-0"
+                className="w-6 h-6 text-blue-600 flex-shrink-0"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -115,7 +119,7 @@ const Contact: React.FC = () => {
               </svg>
               <div>
                 <h3 className="text-lg font-semibold text-gray-800">Call Us</h3>
-                <p className="text-gray-600">+1 5589 55488 55</p>
+                <p className="text-gray-600">+251 993 044 432</p>
               </div>
             </div>
 
@@ -125,7 +129,7 @@ const Contact: React.FC = () => {
               data-aos-delay="500"
             >
               <svg
-                className="w-6 h-6 text-yellow-600 flex-shrink-0"
+                className="w-6 h-6 text-blue-600 flex-shrink-0"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -141,7 +145,7 @@ const Contact: React.FC = () => {
                 <h3 className="text-lg font-semibold text-gray-800">
                   Email Us
                 </h3>
-                <p className="text-gray-600">info@example.com</p>
+                <p className="text-gray-600">rebum.19@gmail.com</p>
               </div>
             </div>
           </div>
@@ -153,34 +157,23 @@ const Contact: React.FC = () => {
             data-aos-delay="200"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
-                  required
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Your Email"
-                  required
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                />
-              </div>
               <input
                 type="text"
-                name="subject"
-                value={formData.subject}
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
-                placeholder="Subject"
+                placeholder="Your Name"
                 required
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-600"
+                className="w-full p-3 border border-gray-300 rounded-md"
+              />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Your Email"
+                required
+                className="w-full p-3 border border-gray-300 rounded-md"
               />
               <textarea
                 name="message"
@@ -189,30 +182,14 @@ const Contact: React.FC = () => {
                 rows={6}
                 placeholder="Message"
                 required
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-600 resize-none"
+                className="w-full p-3 border border-gray-300 rounded-md"
               />
-              <div className="text-center">
-                {status === "loading" && (
-                  <div className="text-gray-600 mb-2">Loading...</div>
-                )}
-                {status === "error" && (
-                  <div className="text-red-600 mb-2">
-                    An error occurred. Please try again.
-                  </div>
-                )}
-                {status === "success" && (
-                  <div className="text-green-600 mb-2">
-                    Your message has been sent. Thank you!
-                  </div>
-                )}
-                <button
-                  type="submit"
-                  disabled={status === "loading"}
-                  className="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700 transition-colors disabled:bg-yellow-600"
-                >
-                  Send Message
-                </button>
-              </div>
+              <button
+                type="submit"
+                className="bg-blue-600 text-white px-6 py-3 rounded-md"
+              >
+                Send Message
+              </button>
             </form>
           </div>
         </div>

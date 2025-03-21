@@ -59,7 +59,7 @@ const testimonials: Testimonial[] = [
 
 const Testimonials: React.FC = () => {
   return (
-    <section id="testimonials" className="relative py-16 bg-gray-900">
+    <section id="testimonials" className="relative py-8 sm:py-16 bg-gray-900">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
@@ -80,7 +80,19 @@ const Testimonials: React.FC = () => {
           loop={true}
           speed={600}
           autoplay={{ delay: 5000 }}
-          slidesPerView="auto"
+          slidesPerView={1} // Show 1 slide on small screens
+          spaceBetween={20} // Add space between slides
+          breakpoints={{
+            640: {
+              slidesPerView: 1, // Show 1 slide on tablets
+            },
+            768: {
+              slidesPerView: 2, // Show 2 slides on larger tablets
+            },
+            1024: {
+              slidesPerView: 3, // Show 3 slides on desktops
+            },
+          }}
           pagination={{
             el: ".swiper-pagination",
             clickable: true,
@@ -89,39 +101,41 @@ const Testimonials: React.FC = () => {
           className="max-w-4xl mx-auto"
         >
           {testimonials.map((testimonial, index) => (
-            <SwiperSlide key={index} className="py-8">
+            <SwiperSlide key={index} className="py-4 sm:py-8">
               <div className="flex justify-center">
-                <div className="text-center text-white max-w-md">
+                <div className="text-center text-white max-w-xs sm:max-w-md">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-white shadow-lg"
+                    className="w-16 h-16 sm:w-24 sm:h-24 rounded-full mx-auto mb-2 sm:mb-4 border-4 border-white shadow-lg"
                   />
-                  <h3 className="text-xl font-semibold mb-1">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-1">
                     {testimonial.name}
                   </h3>
-                  <h4 className="text-gray-300 text-sm mb-3">
+                  <h4 className="text-gray-300 text-xs sm:text-sm mb-2 sm:mb-3">
                     {testimonial.role}
                   </h4>
-                  <div className="flex justify-center gap-1 mb-4 text-yellow-400">
+                  <div className="flex justify-center gap-1 mb-2 sm:mb-4 text-yellow-400">
                     {Array(5)
                       .fill(0)
                       .map((_, i) => (
                         <svg
                           key={i}
-                          className="w-5 h-5 fill-current"
+                          className="w-4 h-4 sm:w-5 sm:h-5 fill-current"
                           viewBox="0 0 20 20"
                         >
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                       ))}
                   </div>
-                  <p className="text-gray-200 italic">{testimonial.quote}</p>
+                  <p className="text-xs sm:text-sm text-gray-200 italic">
+                    {testimonial.quote}
+                  </p>
                 </div>
               </div>
             </SwiperSlide>
           ))}
-          <div className="swiper-pagination mt-6"></div>
+          <div className="swiper-pagination mt-4 sm:mt-6"></div>
         </Swiper>
       </div>
     </section>

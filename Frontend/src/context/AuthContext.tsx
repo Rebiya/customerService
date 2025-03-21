@@ -1,5 +1,8 @@
-import React, { createContext, useContext, useState } from "react";
-import { jwtDecode } from "jwt-decode";
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { getAuth, logout as authLogout } from "../util/auth";
+import logoutService from "../services/AUTH/logout.service";
 
 interface UserType {
   user_id: number;
@@ -15,7 +18,7 @@ interface AuthContextType {
   user: UserType | null;
   setUser: (user: UserType | null) => void;
   isLoggedIn: boolean;
-  logout: () => void;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -23,35 +26,34 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [user, setUser] = useState<UserType | null>(() => {
-    const token = localStorage.getItem("token");
-    if (!token) return null;
+  const [user, setUser] = useState<UserType | null>(null);
+  const navigate = useNavigate();
 
-    try {
-      const decodedToken: any = jwtDecode(token);
-      return {
-        user_id: decodedToken.user_id,
-        user_email: decodedToken.user_email,
-        user_first_name: decodedToken.user_first_name,
-        user_last_name: decodedToken.user_last_name,
-        user_phone_number: decodedToken.user_phone_number,
-        role_id: decodedToken.role_id ?? -1,
-        user_img: decodedToken.user_img,
-      };
-    } catch (error) {
-      console.error("Error decoding token:", error);
-      return null;
+  useEffect(() => {
+    // Use getAuth to check token and set user state
+    const authUser = getAuth();
+
+    if (authUser) {
+      setUser(authUser);
+    } else {
+      setUser(null); // Clear user state if token is invalid or expired
     }
-  });
+  }, []); // Empty dependency array ensures this effect runs only once
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    setUser(null);
-    window.location.href = "/signin";
+  const logout = async () => {
+    try {
+      await logoutService.logout(); // Call the logout service
+      authLogout(); // Clear token from local storage
+      setUser(null); // Clear user state
+      navigate("/"); // Redirect to sign-in page
+    } catch (error) {
+      // console.error("Logout failed:", error);
+    }
   };
 
   return (
     <AuthContext.Provider value={{ user, setUser, isLoggedIn: !!user, logout }}>
+      <ToastContainer position="top-right" autoClose={3000} />
       {children}
     </AuthContext.Provider>
   );

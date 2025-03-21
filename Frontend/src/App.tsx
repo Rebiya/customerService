@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
 import NotFound from "./pages/OtherPage/NotFound";
@@ -13,33 +13,41 @@ import LineChart from "./pages/Charts/LineChart";
 import BarChart from "./pages/Charts/BarChart";
 import Calendar from "./pages/Calendar";
 import BasicTables from "./pages/Tables/BasicTables";
+import EmployeeTable from "./pages/Tables/EmployeeTable";
 import FormElements from "./pages/Forms/FormElements";
-import Blank from "./pages/Blank";
+import CustomerRoute from "./pages/customers/CustomerRoute";
+import MyProfile from "./pages/MyAccount/Profile";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
-import CustomerRoute from "./pages/customers/CustomerRoute";
+import { ToastContainer } from "react-toastify";
+import PrivateAuthRoute from "./util/PrivateAuthRoute";
+import { AuthProvider } from "./context/AuthContext";
+import Support from "./pages/Support";
+import Unauthorized from "./pages/UnAuthorized";
+import ForgotPassword from "./pages/AuthPages/ResetPassword";
+// import Hero from "./pages/customers/Home";
 
 export default function App() {
+  // console.log("Rendering App component...");
+
   return (
     <Router>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/*" element={<CustomerRoute />} />
-        {/* Dashboard Layout */}
-        <Route element={<AppLayout />}>
-          <Route path="/AdminDashBoard" element={<Home />} />
-
-          {/* Other Pages */}
+      <AuthProvider>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/*" element={<CustomerRoute />} />
           <Route path="/profile" element={<UserProfiles />} />
           <Route path="/calendar" element={<Calendar />} />
-          <Route path="/blank" element={<Blank />} />
-
+          <Route path="/support" element={<Support />} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           {/* Forms */}
-          <Route path="/form-elements" element={<FormElements />} />
+          <Route path="/admin/form-elements" element={<FormElements />} />
 
           {/* Tables */}
-          <Route path="/basic-tables" element={<BasicTables />} />
+          <Route path="/admin/customers-table" element={<BasicTables />} />
+          <Route path="/admin/employees-table" element={<EmployeeTable />} />
 
           {/* UI Elements */}
           <Route path="/alerts" element={<Alerts />} />
@@ -52,15 +60,42 @@ export default function App() {
           {/* Charts */}
           <Route path="/line-chart" element={<LineChart />} />
           <Route path="/bar-chart" element={<BarChart />} />
-        </Route>
+          {/* Dashboard Layout */}
+          {/* Public Routes */}
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/my profile"
+            element={
+              <PrivateAuthRoute roles={[1, 2]}>
+                <MyProfile />
+              </PrivateAuthRoute>
+            }
+          />
+          {/* Private Routes Based on Roles */}
+          <Route element={<AppLayout />}>
+            <Route
+              path="/admin"
+              element={
+                <PrivateAuthRoute roles={[3]}>
+                  <Home />
+                </PrivateAuthRoute>
+              }
+            />
+          </Route>
 
-        {/* Auth Layout */}
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
+          {/* Customer Routes */}
+          {/* <Route path="/customer/*" element={<CustomerRoute />} /> */}
 
-        {/* Fallback Route */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          {/* Catch-All Route */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+        />
+      </AuthProvider>{" "}
     </Router>
   );
 }
