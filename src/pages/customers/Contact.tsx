@@ -187,9 +187,18 @@ const Contact: React.FC = () => {
               <button
                 type="submit"
                 className="bg-blue-600 text-white px-6 py-3 rounded-md"
+                disabled={status === "loading"}
               >
-                Send Message
+                {status === "loading" ? "Sending..." : "Send Message"}
               </button>
+              {status === "success" && (
+                <p className="text-green-600">Message sent successfully!</p>
+              )}
+              {status === "error" && (
+                <p className="text-red-600">
+                  Failed to send message. Please try again.
+                </p>
+              )}
             </form>
           </div>
         </div>
