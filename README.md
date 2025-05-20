@@ -118,8 +118,8 @@ This platform is built with dedication to improving governmental service deliver
 ## 📬 Contact
 
 For questions or support:
-- 📧 Email: [youremail@example.com]
-- 🌐 Website: [yourdomain.com]
+- 📧 Email: [rebiya.musema-ug@aau.edu.et]
+- 🌐 Website: [rebiyamusema.com]
 
 ---
 
