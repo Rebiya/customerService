@@ -1,127 +1,75 @@
-```markdown
 # 📋 Business Licensing & Trade Registration System
 
-> **🎥 Live Demo**  
-> ▶️ YouTube: [Watch Demo Video](https://youtu.be/YwpkcgIzUrE)  
-> 🌐 Website: [Try Live App](https://csbusinesslicensing.netlify.app/)
+> A modern platform designed to digitize and streamline business licensing and registration processes.
+
+🔗 **Live Demo**: [Try the App](https://csbusinesslicensing.netlify.app/)  
+🎥 **Watch Video**: [YouTube Demo](https://youtu.be/YwpkcgIzUrE)
 
 ---
 
 ## 🚀 Overview
 
-Welcome to the **Business Licensing & Trade Registration System** — a modern platform designed to **simplify**, **streamline**, and **digitize** the business licensing process for both government agencies and business owners.
+The **Business Licensing & Trade Registration System** is a comprehensive, user-friendly platform built to modernize and accelerate the process of acquiring and managing business licenses and trade registrations.
 
-This system aims to **facilitate efficient public service delivery** by enabling users to apply for business licenses and registrations online. Whether you're a startup founder, a government officer, or simply curious, this platform ensures ease of use, transparency, and efficiency.
+Designed for both government agencies and entrepreneurs, this application reduces bureaucracy, boosts transparency, and enables digital-first public service delivery.
 
 ---
 
 ## 🎯 Key Features
 
-- ✅ **Easy to Use**  
-  Simple, intuitive user interface. Fill out forms, upload documents, and track your application — all in a few clicks.
+- **Intuitive & Accessible**  
+  A clean interface that allows users to register, upload documents, and track application status effortlessly.
 
-- ⚡ **Faster Processing**  
-  Eliminate long queues and paperwork. Our digital workflow ensures speedy license issuance and renewal.
+- **Efficient Workflows**  
+  Minimizes manual effort through automated license issuance and renewal processes.
 
-- 📱 **Real-Time Updates**  
-  Get instant email or SMS notifications about your application status and other important updates.
+- **Real-Time Communication**  
+  Users receive instant updates via email and SMS for every critical status change.
 
-- 🔒 **Secure & Authorized Access**  
-  Your personal and business data is stored securely and only accessible to authorized personnel.
+- **Data Security & Access Control**  
+  All data is encrypted and restricted to authorized personnel only.
 
-- 📈 **Scalable for Future Needs**  
-  Modular design allows for future integration with:
-  - Online payment gateways
-  - Advanced document verification
-  - Analytics dashboards
-
----
-
-## 🛠️ Services Supported
-
-- 🏢 **Business Registration**
-- 📄 **License Issuance & Renewal**
-- 💰 **VAT & Tax Registration**
-- 📝 **Investment Permit Approval**
-- 🧾 **Trade Name Reservation**
-- ✔️ **Inspection & Compliance Tracking**
+- **Future-Ready Architecture**  
+  Modular system allows easy integration with:
+  - Digital payment systems  
+  - National ID/document verification  
+  - Government reporting dashboards
 
 ---
 
-## 🧰 Tech Stack
+## 🛠️ Supported Services
 
-- **Frontend**: React, Tailwind CSS, Mantine UI, ApexCharts, FullCalendar
-- **Routing**: React Router v7
-- **Form Handling**: React Hook Form, Dropzone
-- **Calendar & Scheduler**: Flatpickr, FullCalendar
-- **Notifications**: React Toastify, EmailJS
-- **Data Fetching**: Axios
-- **Styling**: Tailwind CSS, Emotion, MUI
-- **Bundler**: Vite
-- **Type Safety**: TypeScript
-- **Linting**: ESLint
+- Business Registration  
+- Trade License Issuance & Renewal  
+- VAT and Taxpayer Registration  
+- Investment Permit Application  
+- Trade Name Reservation  
+- Compliance Inspection Scheduling
 
 ---
 
-## 📦 Installation
+## ⚙️ Tech Stack
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/yourusername/business-licensing-app.git
-   cd business-licensing-app
-   ```
+### Frontend
+- **React** + **TypeScript**
+- **Tailwind CSS**, **Mantine UI**, **Emotion**
+- **React Router v7**
+- **ApexCharts**, **FullCalendar**
 
-2. **Install Dependencies**
-   ```bash
-   npm install
-   ```
+### Form Handling & Notifications
+- **React Hook Form**, **Dropzone**
+- **EmailJS**, **React Toastify**
 
-3. **Run the App**
-   ```bash
-   npm run dev
-   ```
-
----
-
-## 🧪 Available Scripts
-
-```json
-"scripts": {
-  "dev": "vite",
-  "build": "tsc -b && vite build",
-  "lint": "eslint .",
-  "preview": "vite preview",
-  "build:css": "tailwindcss build src/styles.css -o public/styles.css"
-}
-```
+### Tools & Utilities
+- **Axios** for API communication  
+- **Vite** (build tool)  
+- **ESLint** (linting and code quality)
 
 ---
 
-## 🤝 Contributing
+## 🧩 Installation & Setup
 
-We welcome contributions from developers, UI/UX designers, and public sector partners. Please open an issue or submit a pull request!
-
----
-
-## 🛡️ License
-
-This project is licensed under [MIT License](LICENSE).
-
----
-
-## 👥 Acknowledgements
-
-This platform is built with dedication to improving governmental service delivery, empowering entrepreneurs, and supporting a transparent business environment.
-
----
-
-## 📬 Contact
-
-For questions or support:
-- 📧 Email: [rebiya.musema-ug@aau.edu.et]
-- 🌐 Website: [rebiyamusema.com]
-
----
-
-> “Simplifying government processes, one click at a time.”
-```
+### 1. Clone the Repository
+```bash
+git clone https://github.com/yourusername/business-licensing-app.git
+cd business-licensing-app
